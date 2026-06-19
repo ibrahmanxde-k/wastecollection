@@ -1,0 +1,221 @@
+:root {
+  --bg-dark: #0b1220;
+  --bg-dark-2: #121a2e;
+  --bg-light: #f2f5fb;
+  --text-dark: #eaf0ff;
+  --text-light: #1b2440;
+  --card-dark: rgba(13, 21, 40, 0.78);
+  --card-light: rgba(255, 255, 255, 0.86);
+  --border-dark: rgba(148, 163, 184, 0.25);
+  --border-light: rgba(15, 23, 42, 0.1);
+  --primary: #3b82f6;
+  --primary-2: #2563eb;
+  --danger: #ef4444;
+  --muted-dark: #9fb0d0;
+  --muted-light: #5e6a86;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  transition: background 0.35s ease, color 0.35s ease;
+  margin: 0;
+  min-height: 100vh;
+}
+
+body.dark {
+  color: var(--text-dark);
+  background:
+    radial-gradient(circle at 8% 12%, rgba(59, 130, 246, 0.2), transparent 34%),
+    radial-gradient(circle at 92% 85%, rgba(16, 185, 129, 0.14), transparent 30%),
+    linear-gradient(135deg, var(--bg-dark), var(--bg-dark-2));
+}
+
+body.light {
+  color: var(--text-light);
+  background:
+    radial-gradient(circle at 8% 12%, rgba(59, 130, 246, 0.12), transparent 34%),
+    radial-gradient(circle at 92% 85%, rgba(16, 185, 129, 0.1), transparent 30%),
+    linear-gradient(135deg, #f8fbff, var(--bg-light));
+}
+
+.page-wrap {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28px 16px;
+}
+
+.form-container {
+  width: 100%;
+  max-width: 450px;
+  border-radius: 20px;
+  padding: 28px 24px;
+  border: 1px solid var(--border-dark);
+  backdrop-filter: blur(10px);
+  animation: fadeIn 0.8s ease;
+  box-shadow: 0 14px 45px rgba(2, 8, 23, 0.33);
+}
+
+body.dark .form-container {
+  background: var(--card-dark);
+}
+
+body.light .form-container {
+  background: var(--card-light);
+  border-color: var(--border-light);
+  box-shadow: 0 14px 35px rgba(15, 23, 42, 0.15);
+}
+
+.form-title {
+  margin: 0 0 8px;
+  font-size: 1.52rem;
+}
+
+.form-subtitle {
+  margin: 0 0 18px;
+  color: var(--muted-dark);
+}
+
+body.light .form-subtitle {
+  color: var(--muted-light);
+}
+
+label {
+  display: block;
+  font-size: 0.93rem;
+  margin: 11px 0 6px;
+}
+
+input,
+textarea,
+select,
+button {
+  width: 100%;
+  padding: 12px 14px;
+  margin: 0 0 10px;
+  border-radius: 10px;
+  font-size: 0.97rem;
+}
+
+input,
+textarea,
+select {
+  border: 1px solid var(--border-dark);
+  color: inherit;
+  background: rgba(15, 23, 42, 0.28);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+body.light input,
+body.light textarea,
+body.light select {
+  border-color: rgba(15, 23, 42, 0.16);
+  background: rgba(255, 255, 255, 0.82);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.22);
+}
+
+button {
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  background: linear-gradient(135deg, var(--primary), var(--primary-2));
+  cursor: pointer;
+  transition: transform 0.16s ease, filter 0.22s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.08);
+}
+
+.small-link {
+  margin-top: 10px;
+  text-align: center;
+}
+
+a {
+  color: #60a5fa;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+body.light a {
+  color: #1d4ed8;
+}
+
+.error {
+  color: var(--danger);
+  margin: 8px 0 12px;
+  font-weight: 600;
+}
+
+.hidden {
+  color: transparent;
+  user-select: none;
+}
+
+.theme-toggle {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  left: auto;
+  margin-top: 0;
+  text-align: right;
+  z-index: 1000;
+}
+
+.theme-toggle button {
+  width: auto;
+  margin: 0;
+  background: linear-gradient(135deg, #f97316, #db2777);
+  padding: 10px 14px;
+}
+
+.status-chip {
+  font-size: 0.86rem;
+  border-radius: 999px;
+  display: inline-block;
+  padding: 5px 11px;
+  margin-top: 4px;
+  background: rgba(34, 197, 94, 0.2);
+  color: #86efac;
+}
+
+body.light .status-chip {
+  background: rgba(59, 130, 246, 0.13);
+  color: #1d4ed8;
+}
+
+@media (max-width: 560px) {
+  .form-container {
+    padding: 22px 16px;
+    border-radius: 16px;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
